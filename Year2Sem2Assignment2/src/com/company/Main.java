@@ -25,6 +25,22 @@ public class Main {
         return sc.nextDouble();
     }
 
+    public static void showMenu(ArrayManager h,Scanner sc)
+    {
+        int choice;
+        System.out.println("Please chose the following");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("1) Add Items to the show");
+        System.out.println("2) Delete Items from the show");
+        System.out.println("3) Buy from the Shop");
+        System.out.println("4) View backpack");
+        System.out.println("5) View Player");
+        System.out.println("6) Exit");
+        choice = getInteger(sc,"Please Chose the following: ");
+        if(choice == 1){
+            addWeapons(h,sc);
+        }
+    }
 
     public static void addWeapons(ArrayManager h,Scanner sc)
     {
@@ -47,16 +63,7 @@ public class Main {
         }
     }
 
-    public static void showMenu(Scanner sc)
-    {
-        System.out.println("Please chose the following");
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        System.out.println("1) Add Items to the show");
-        System.out.println("2) Delete Items from the show");
-        System.out.println("3) Buy from the Shop");
-        System.out.println("4) View backpack");
-        System.out.println();
-    }
+
 
 
     public static void showRoomMenu(ArrayManager ht,Player p){
@@ -98,7 +105,7 @@ public class Main {
         pname=sc.next();
         Player pl= new Player(pname,45);
         ArrayManager ht= new ArrayManager(101);
-        addWeapons(ht,sc);
+        showMenu(ht,sc);
         showRoom(ht, pl,sc);
         pl.printCharacter();
     }
