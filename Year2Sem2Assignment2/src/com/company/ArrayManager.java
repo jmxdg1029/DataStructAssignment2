@@ -57,9 +57,13 @@ public class ArrayManager {
     public void printTable()
     {
         int count = 0;
-        for (int x = 0; x < numItems; x++)
+        for (int x = 0; x < maxItems; x++)
         {
-            System.out.println("Name: " +table[x].item.weaponName+"   Damage:"+table[x].item.damage+"    Cost:"+table[x].item.cost+"     Quantity in stock:"+table[x].numberInStock);
+            if(table[x] != null)
+            {
+                System.out.println("Name: " + table[x].item.weaponName + " Damage: "+ table[x].item.damage+ " Cost: "+table[x].item.cost);
+            }else
+                System.out.println(table[x]);
         }
     }
 }
