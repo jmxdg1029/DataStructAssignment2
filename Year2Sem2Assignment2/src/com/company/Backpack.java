@@ -1,6 +1,7 @@
 package com.company;
 
 public class Backpack {
+<<<<<<< Updated upstream
     private int numItems;
     private int maxItems ;
     private double currWeight;
@@ -12,4 +13,10 @@ public class Backpack {
         currWeight = 0;
         maxWeight = 90;
     }
+=======
+    int numItems;
+    int maxItems;
+    double currWeight;
+    double maxWeight;
+>>>>>>> Stashed changes
 }

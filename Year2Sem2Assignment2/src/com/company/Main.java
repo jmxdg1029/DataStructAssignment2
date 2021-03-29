@@ -85,6 +85,7 @@ public class Main {
             {
                 p.buy(si.item);
                 p.withdraw(si.item.cost);
+                p.noMoney();
                 si.numberInStock--;
             }
             else

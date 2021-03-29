@@ -8,6 +8,8 @@ public class ShopItem {
         item=w;
         numberInStock=nInStock;
     }
+
+
 }
 
 

@@ -24,11 +24,20 @@ package com.company;
         public void withdraw(double amt)
         {
             money = money - amt;
+            if (money<=0){
+                money = money + amt;
+                System.out.println("You do not have enough money");
+            }
         }
 
         public boolean inventoryFull()
         {
             return (numItems == 10) ;
+        }
+
+        public boolean noMoney()
+        {
+            return (money <= 0) ;
         }
 
         public void printCharacter()
