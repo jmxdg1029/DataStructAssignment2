@@ -8,19 +8,18 @@ public class ArrayManager {
 
     public ArrayManager(int size)
     {
-        table = new ShopItem[maxItems];
         maxItems = size;
-        numItems = 1;
+        table = new ShopItem[maxItems];
+        numItems = 0;
         loadFactor = 0.75;
     }
 
     public int hashFunction(Weapon item){
         int value = 0,weight = 1;
-        for(int x = 1; x < item.weaponName.length(); x++){
+        for(int x = 0; x < item.weaponName.length(); x++){
             value+=(item.weaponName.charAt(x)-'a'+1)*weight;
             weight++;
         }
-        value+= item.range+item.damage;
         return value%maxItems;
     }
 
