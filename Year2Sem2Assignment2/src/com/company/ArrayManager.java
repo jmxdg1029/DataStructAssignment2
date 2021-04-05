@@ -14,10 +14,10 @@ public class ArrayManager {
         loadFactor = 0.75;
     }
 
-    public int hashFunction(Weapon item){
+    public int hashFunction(String weapName){
         int value = 0,weight = 1;
-        for(int x = 0; x < item.weaponName.length(); x++){
-            value+=(item.weaponName.charAt(x)-'a'+1)*weight;
+        for(int x = 0; x < weapName.length(); x++){
+            value+=(weapName.charAt(x)-'a'+1)*weight;
             weight++;
         }
         return value%maxItems;
@@ -27,7 +27,7 @@ public class ArrayManager {
     public void put(Weapon item,int quantity) {
         int count = 1;//number of collision
         if (numItems/maxItems <loadFactor){
-            int startLoc = hashFunction(item);
+            int startLoc = hashFunction(item.weaponName);
             int loc = startLoc;
             while(table[loc] != null) {
                 loc = (startLoc+count*count)%maxItems;
@@ -37,21 +37,21 @@ public class ArrayManager {
             numItems++;
             System.out.println(numItems);
         }
-
     }
 
-    public ShopItem get(String key)
-    {
-        int location = 0; //gets location in table based on key
-
-        while (location <numItems && key.compareTo(table[location].item.weaponName) != 0)
-        {  // not empty and not item
-            location++;
+    public ShopItem get(String weapName) {
+        int count = 1;
+        int startLoc = hashFunction(weapName);
+        int location = startLoc; //gets location in table based on key
+        if (table[location] == null){
+            return null;
         }
-        if (location<numItems){
-            return table[location];
+        while (location < numItems && weapName.compareTo(table[location].item.weaponName) != 0)
+        {//not empty and not item
+            location = (startLoc + count * count) % maxItems;
+            count++;
         }
-        return null;
+        return table[location];
     }
 
     public void printTable()
@@ -62,9 +62,10 @@ public class ArrayManager {
             if(table[x] != null)
             {
                 System.out.println("Name: " + table[x].item.weaponName + " Damage: "+ table[x].item.damage+ " Cost: "+table[x].item.cost);
-            }else
-                System.out.println(table[x]);
+            }
         }
     }
+
+
 }
 
