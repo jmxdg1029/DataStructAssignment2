@@ -42,6 +42,7 @@ package com.company;
 
         public void printCharacter()
         {
+            System.out.println("\n");
             System.out.println(" Name:"+name+"\n Money:"+money);
             printBackpack();
         }

@@ -25,7 +25,7 @@ public class Main {
         return sc.nextDouble();
     }
 
-    public static void showMenu(ArrayManager h,Scanner sc)
+    public static void showMenu(ArrayManager h,Player p,Scanner sc)
     {
         int choice;
         System.out.println("Please chose the following");
@@ -37,10 +37,51 @@ public class Main {
         System.out.println("5) View Player");
         System.out.println("6) Exit");
         choice = getInteger(sc,"Please Chose the following: ");
-        if(choice == 1){
-            addWeapons(h,sc);
+        switch (choice){
+            case 1:
+                addWeapons(h,sc);
+                showMenu(h, p, sc);
+                break;
+            case 2:
+                break;
+            case 3:
+                showRoom(h,p,sc);
+                showMenu(h, p, sc);
+                break;
+            case 4:
+                break;
+            case 5:
+                p.printCharacter();
+                showMenu(h, p, sc);
+            case 6:
+                break;
+        }
+
+
+    }
+
+    public static void viewBackpack(ArrayManager h,Scanner sc)
+    {
+        System.out.println("***********WELCOME TO THE WEAPON ADDING MENU*********");
+        String weaponName; int weaponRange; int weaponDamage; double weaponWeight; double weaponCost;
+        int quantity;
+        System.out.print("Please enter the NAME of the Weapon ('end' to quit):");
+        weaponName=sc.next();
+        while (weaponName.compareTo("end") != 0)
+        {
+            weaponRange= getInteger(sc,"Please enter the Range of the Weapon (0-10):");
+            weaponDamage=getInteger(sc,"Please enter the Damage of the Weapon:");
+            weaponWeight= getDouble(sc,"Please enter the Weight of the Weapon (in pounds):");
+            weaponCost=getDouble(sc,"Please enter the Cost of the Weapon:");
+            Weapon w = new Weapon(weaponName, weaponRange, weaponDamage, weaponWeight, weaponCost);
+            quantity=getInteger(sc,"Please enter the quantity in stock:");
+            h.put(w,quantity);
+            System.out.print("Please enter the NAME of another Weapon ('end' to quit):");
+            weaponName = sc.next();
         }
     }
+
+
 
     public static void addWeapons(ArrayManager h,Scanner sc)
     {
@@ -106,8 +147,6 @@ public class Main {
         pname=sc.next();
         Player pl= new Player(pname,45);
         ArrayManager ht= new ArrayManager(101);
-        showMenu(ht,sc);
-        showRoom(ht, pl,sc);
-        pl.printCharacter();
+        showMenu(ht,pl,sc);
     }
 }
