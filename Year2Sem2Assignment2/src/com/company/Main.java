@@ -43,6 +43,8 @@ public class Main {
                 showMenu(h, p, sc);
                 break;
             case 2:
+                removeWeapon(h,sc);
+                showMenu(h,p,sc);
                 break;
             case 3:
                 showRoom(h,p,sc);
@@ -104,6 +106,35 @@ public class Main {
         }
     }
 
+    public static void showRemoveMenu(ArrayManager ht){
+
+        System.out.println();
+        System.out.println("***********DELETE A WEAPON*********");
+        System.out.print("Please enter the Name of the Weapon ('end' to quit):");
+    }
+
+    public static void removeWeapon(ArrayManager ht, Scanner sc)
+    {
+        String weaponName;
+        showRemoveMenu(ht);
+        weaponName = sc.next();
+        while(weaponName.compareTo("end") != 0)
+        {
+            if (ht.removeItem(weaponName)){
+                System.out.println();
+                System.out.println("SUCCESS");
+                System.out.println("Item has been deleted");
+            }else{
+                System.out.println();
+                System.out.println("---WARNING---");
+                System.out.println("That item is not in the Shop...");
+                System.out.println("---WARNING---");
+            };
+            showRemoveMenu(ht);
+            weaponName = sc.next();
+        }
+        System.out.println();
+    }
 
 
 
