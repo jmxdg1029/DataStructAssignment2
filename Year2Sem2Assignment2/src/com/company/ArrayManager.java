@@ -37,20 +37,19 @@ public class ArrayManager {
             numItems++;
             System.out.println(numItems);
         }
-
     }
 
     public ShopItem get(String weapName) {
         int count = 1;
         int startLoc = hashFunction(weapName);
-        int location = 0; //gets location in table based on key
-        while (location <numItems && weapName.compareTo(table[location].item.weaponName) != 0)
-        {  // not empty and not item
-            location = (startLoc + count * count) % maxItems;
-            count++;
-        }
+        int location = startLoc; //gets location in table based on key
         if (table[location] == null){
             return null;
+        }
+        while (location < numItems && weapName.compareTo(table[location].item.weaponName) != 0)
+        {//not empty and not item
+            location = (startLoc + count * count) % maxItems;
+            count++;
         }
         return table[location];
     }
@@ -63,9 +62,10 @@ public class ArrayManager {
             if(table[x] != null)
             {
                 System.out.println("Name: " + table[x].item.weaponName + " Damage: "+ table[x].item.damage+ " Cost: "+table[x].item.cost);
-            }else
-                System.out.println(table[x]);
+            }
         }
     }
+
+
 }
 
