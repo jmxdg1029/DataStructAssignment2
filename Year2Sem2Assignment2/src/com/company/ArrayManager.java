@@ -54,6 +54,22 @@ public class ArrayManager {
         return table[location];
     }
 
+    public boolean removeItem(String word){
+        int count = 1;
+        int startLoc = hashFunction(word);
+        int loc = startLoc;
+        while(table[loc] != null && table[loc].item.weaponName.compareTo(word) != 0){
+            loc = (startLoc + count * count) % maxItems;
+            count++;
+        }
+        if(table[loc] != null){
+            table[loc] = null;
+            numItems--;
+            return true;
+        }
+        return false;
+    }
+
     public void printTable()
     {
         int count = 0;
