@@ -97,6 +97,11 @@ public class Main {
         {
             if(h.nameCheck(weaponName) == -1) {
                 weaponRange = getInteger(sc, "Please enter the Range of the Weapon (0-10):");
+                while(weaponRange > 10){
+                    System.out.println();
+                    System.out.println("The weapon range is too high");
+                    weaponRange = getInteger(sc, "Please enter the Range of the Weapon (0-10):");
+                }
                 weaponDamage = getInteger(sc, "Please enter the Damage of the Weapon:");
                 weaponWeight = getDouble(sc, "Please enter the Weight of the Weapon (in pounds):");
                 weaponCost = getDouble(sc, "Please enter the Cost of the Weapon:");

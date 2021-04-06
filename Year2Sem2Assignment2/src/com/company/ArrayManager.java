@@ -99,13 +99,15 @@ public class ArrayManager {
     public void printTable()
     {
         int count = 0;
+        System.out.println("--------ITEM SHOP--------");
         for (int x = 0; x < maxItems; x++)
         {
             if(table[x] != null)
             {
-                System.out.println("Name: " + table[x].item.weaponName + " Damage: "+ table[x].item.damage+ " Cost: "+table[x].item.cost + " Stock: "+table[x].numberInStock);
+                System.out.println("Name: " + table[x].item.weaponName + "     Range: "+table[x].item.range+"     Damage: "+ table[x].item.damage+ "     Cost: $"+table[x].item.cost + "     Stock: "+table[x].numberInStock);
             }
         }
+        System.out.println("------------------------");
     }
 
 
