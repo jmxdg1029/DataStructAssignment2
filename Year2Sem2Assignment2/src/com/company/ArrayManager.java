@@ -54,6 +54,32 @@ public class ArrayManager {
         return table[location];
     }
 
+    public int nameCheck(String weapName){
+        int count = 1;
+        int startLoc = hashFunction(weapName);
+        int location = startLoc; //gets location in table based on key
+        if (table[location] == null){
+            return -1;
+        }
+        while (location < numItems && weapName.compareTo(table[location].item.weaponName) != 0)
+        {//not empty and not item
+            location = (startLoc + count * count) % maxItems;
+            count++;
+        }
+
+        return location;
+    }
+
+    public Boolean addStock(String weapName, int quantity){
+        if(nameCheck(weapName) != -1){
+            table[nameCheck(weapName)].numberInStock += quantity;
+            System.out.println(table[nameCheck(weapName)].numberInStock);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public boolean removeItem(String word){
         int count = 1;
         int startLoc = hashFunction(word);
@@ -77,7 +103,7 @@ public class ArrayManager {
         {
             if(table[x] != null)
             {
-                System.out.println("Name: " + table[x].item.weaponName + " Damage: "+ table[x].item.damage+ " Cost: "+table[x].item.cost);
+                System.out.println("Name: " + table[x].item.weaponName + " Damage: "+ table[x].item.damage+ " Cost: "+table[x].item.cost + " Stock: "+table[x].numberInStock);
             }
         }
     }

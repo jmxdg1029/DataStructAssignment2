@@ -1,5 +1,6 @@
 package com.company;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -94,15 +95,25 @@ public class Main {
         weaponName=sc.next();
         while (weaponName.compareTo("end") != 0)
         {
-            weaponRange= getInteger(sc,"Please enter the Range of the Weapon (0-10):");
-            weaponDamage=getInteger(sc,"Please enter the Damage of the Weapon:");
-            weaponWeight= getDouble(sc,"Please enter the Weight of the Weapon (in pounds):");
-            weaponCost=getDouble(sc,"Please enter the Cost of the Weapon:");
-            Weapon w = new Weapon(weaponName, weaponRange, weaponDamage, weaponWeight, weaponCost);
-            quantity=getInteger(sc,"Please enter the quantity in stock:");
-            h.put(w,quantity);
-            System.out.print("Please enter the NAME of another Weapon ('end' to quit):");
-            weaponName = sc.next();
+            if(h.nameCheck(weaponName) == -1) {
+                weaponRange = getInteger(sc, "Please enter the Range of the Weapon (0-10):");
+                weaponDamage = getInteger(sc, "Please enter the Damage of the Weapon:");
+                weaponWeight = getDouble(sc, "Please enter the Weight of the Weapon (in pounds):");
+                weaponCost = getDouble(sc, "Please enter the Cost of the Weapon:");
+                Weapon w = new Weapon(weaponName, weaponRange, weaponDamage, weaponWeight, weaponCost);
+                quantity = getInteger(sc, "Please enter the quantity in stock:");
+                h.put(w, quantity);
+                System.out.print("Please enter the NAME of another Weapon ('end' to quit):");
+                weaponName = sc.next();
+            }else{
+                System.out.println();
+                System.out.println("This name is already in the Shop.");
+                quantity = getInteger(sc,("Please enter the amount you would like to add in stock:"));
+                h.addStock(weaponName,quantity);
+                System.out.println("Thank You!!");
+                System.out.print("Please enter the NAME of another Weapon ('end' to quit):");
+                weaponName = sc.next();
+            }
         }
     }
 
