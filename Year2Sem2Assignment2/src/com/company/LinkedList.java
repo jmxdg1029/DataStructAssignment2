@@ -16,7 +16,7 @@ public class LinkedList{
 
 
     public String printList(){
-        String s="List: ";
+        String s="Slot: ";
         Node curr= head;
         while (curr!=null){
             s+=curr.data.weaponName+" ";

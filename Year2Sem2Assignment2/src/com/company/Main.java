@@ -26,6 +26,8 @@ public class Main {
         return sc.nextDouble();
     }
 
+
+
     public static void showMenu(ArrayManager h,Player p,Scanner sc)
     {
         int choice;
@@ -49,24 +51,25 @@ public class Main {
                 break;
             case 3:
                 showRoom(h,p,sc);
-                showMenu(h, p, sc);
+                showMenu(h, p,sc);
                 break;
             case 4:
-                
-                showMenu(h, p,  sc);
+                viewBackpack(p,sc);
+                showMenu(h, p, sc);
                 break;
             case 5:
                 p.printCharacter();
-                showMenu(h, p,sc);
+                showMenu(h, p, sc);
             case 6:
                 break;
         }
 
     }
 
-    public static void viewBackpack(Backpack b,Scanner sc)
+    public static void viewBackpack(Player p,Scanner sc)
     {
-        b.getPrintList();
+        System.out.println("***********WELCOME TO " + p.name + "'s Backpack*********");
+        p.printBackpack();
     }
 
 

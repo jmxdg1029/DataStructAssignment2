@@ -47,6 +47,9 @@ package com.company;
             backpack.getPrintList();
         }
 
+        public void printBackpack(){
+            backpack.getPrintList();
+        }
 
     }
 

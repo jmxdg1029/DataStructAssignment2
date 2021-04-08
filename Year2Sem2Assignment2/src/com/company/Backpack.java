@@ -34,11 +34,10 @@ public class Backpack {
 
 
     public void getPrintList(){
-         for (LinkedList ll : table){
+         for (LinkedList ll : table) {
              if (ll != null) {
                  System.out.println(ll.printList());
-             }else
-                 System.out.println("null");
+             }
          }
     }
 
