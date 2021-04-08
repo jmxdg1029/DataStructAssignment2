@@ -26,7 +26,7 @@ public class Main {
         return sc.nextDouble();
     }
 
-    public static void showMenu(ArrayManager h,Player p,Backpack b,Scanner sc)
+    public static void showMenu(ArrayManager h,Player p,Scanner sc)
     {
         int choice;
         System.out.println("Please chose the following");
@@ -41,27 +41,26 @@ public class Main {
         switch (choice){
             case 1:
                 addWeapons(h,sc);
-                showMenu(h, p, b, sc);
+                showMenu(h, p, sc);
                 break;
             case 2:
                 removeWeapon(h,sc);
-                showMenu(h,p,b,sc);
+                showMenu(h,p,sc);
                 break;
             case 3:
-                showRoom(h,p,b,sc);
-                showMenu(h, p,b, sc);
+                showRoom(h,p,sc);
+                showMenu(h, p, sc);
                 break;
             case 4:
-                viewBackpack(b,sc);
-                showMenu(h, p, b, sc);
+                
+                showMenu(h, p,  sc);
                 break;
             case 5:
                 p.printCharacter();
-                showMenu(h, p, b, sc);
+                showMenu(h, p,sc);
             case 6:
                 break;
         }
-
 
     }
 
@@ -142,7 +141,7 @@ public class Main {
         System.out.println("Please select a weapon to buy('end' to quit):");
     }
 
-    public static void showRoom(ArrayManager ht, Player p, Backpack b,Scanner sc)
+    public static void showRoom(ArrayManager ht, Player p,Scanner sc)
     {
         String choice;
         showRoomMenu(ht,p);
@@ -175,7 +174,6 @@ public class Main {
         pname=sc.next();
         Player pl= new Player(pname,45);
         ArrayManager ht= new ArrayManager(101);
-        Backpack b = new Backpack(30);
-        showMenu(ht,pl,b,sc);
+        showMenu(ht,pl,sc);
     }
 }

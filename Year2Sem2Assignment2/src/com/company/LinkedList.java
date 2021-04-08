@@ -14,11 +14,12 @@ public class LinkedList{
         head=newNode;
     }
 
+
     public String printList(){
         String s="List: ";
         Node curr= head;
         while (curr!=null){
-            s+=curr.data+" ";
+            s+=curr.data.weaponName+" ";
             curr=curr.next;
         }
         return s;

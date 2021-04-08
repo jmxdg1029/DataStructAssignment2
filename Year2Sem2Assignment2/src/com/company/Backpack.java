@@ -8,25 +8,11 @@ public class Backpack {
     double currWeight;
     double maxWeight;
 
-
-
     public Backpack(int size){
         maxItems = size;
         table = new LinkedList[maxItems];
-
     }
 
-    public void insert(Weapon item)
-    {
-        numItems++;
-        int pos = hashFunction(item);
-        if (table[pos] == null)
-            table[pos] = new LinkedList();
-        else {
-            table[pos].addFront(item);
-        }
-
-    }
     /* Function myhash */
     public int hashFunction(Weapon weapon){
         int value = 0;
@@ -36,11 +22,23 @@ public class Backpack {
         return value%maxItems;
     }
 
+    public void insert(Weapon item)
+    {
+        int pos = hashFunction(item);
+        if (table[pos] == null)
+            table[pos] = new LinkedList();
+        table[pos].addFront(item);
+        System.out.println(table[pos]);
+        numItems++;
+    }
+
+
     public void getPrintList(){
          for (LinkedList ll : table){
-             if (ll == null) System.out.println("EMPTY");
-             else ll.printList();
-
+             if (ll != null) {
+                 System.out.println(ll.printList());
+             }else
+                 System.out.println("null");
          }
     }
 
