@@ -26,7 +26,7 @@ public class Main {
         return sc.nextDouble();
     }
 
-    public static void showMenu(ArrayManager h,Player p,Scanner sc)
+    public static void showMenu(ArrayManager h,Player p,Backpack b,Scanner sc)
     {
         int choice;
         System.out.println("Please chose the following");
@@ -41,21 +41,23 @@ public class Main {
         switch (choice){
             case 1:
                 addWeapons(h,sc);
-                showMenu(h, p, sc);
+                showMenu(h, p, b, sc);
                 break;
             case 2:
                 removeWeapon(h,sc);
-                showMenu(h,p,sc);
+                showMenu(h,p,b,sc);
                 break;
             case 3:
-                showRoom(h,p,sc);
-                showMenu(h, p, sc);
+                showRoom(h,p,b,sc);
+                showMenu(h, p,b, sc);
                 break;
             case 4:
+                viewBackpack(b,sc);
+                showMenu(h, p, b, sc);
                 break;
             case 5:
                 p.printCharacter();
-                showMenu(h, p, sc);
+                showMenu(h, p, b, sc);
             case 6:
                 break;
         }
@@ -63,25 +65,9 @@ public class Main {
 
     }
 
-    public static void viewBackpack(ArrayManager h,Scanner sc)
+    public static void viewBackpack(Backpack b,Scanner sc)
     {
-        System.out.println("***********WELCOME TO THE WEAPON ADDING MENU*********");
-        String weaponName; int weaponRange; int weaponDamage; double weaponWeight; double weaponCost;
-        int quantity;
-        System.out.print("Please enter the NAME of the Weapon ('end' to quit):");
-        weaponName=sc.next();
-        while (weaponName.compareTo("end") != 0)
-        {
-            weaponRange= getInteger(sc,"Please enter the Range of the Weapon (0-10):");
-            weaponDamage=getInteger(sc,"Please enter the Damage of the Weapon:");
-            weaponWeight= getDouble(sc,"Please enter the Weight of the Weapon (in pounds):");
-            weaponCost=getDouble(sc,"Please enter the Cost of the Weapon:");
-            Weapon w = new Weapon(weaponName, weaponRange, weaponDamage, weaponWeight, weaponCost);
-            quantity=getInteger(sc,"Please enter the quantity in stock:");
-            h.put(w,quantity);
-            System.out.print("Please enter the NAME of another Weapon ('end' to quit):");
-            weaponName = sc.next();
-        }
+        b.getPrintList();
     }
 
 
@@ -156,7 +142,7 @@ public class Main {
         System.out.println("Please select a weapon to buy('end' to quit):");
     }
 
-    public static void showRoom(ArrayManager ht, Player p,Scanner sc)
+    public static void showRoom(ArrayManager ht, Player p, Backpack b,Scanner sc)
     {
         String choice;
         showRoomMenu(ht,p);
@@ -189,6 +175,7 @@ public class Main {
         pname=sc.next();
         Player pl= new Player(pname,45);
         ArrayManager ht= new ArrayManager(101);
-        showMenu(ht,pl,sc);
+        Backpack b = new Backpack(30);
+        showMenu(ht,pl,b,sc);
     }
 }
