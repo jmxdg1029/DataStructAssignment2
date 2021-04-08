@@ -2,22 +2,22 @@ package com.company;
     class Player
     {
         public String name;
-        public Weapon[] backpack;
         public int numItems;
         public double money;
+        Backpack backpack;
 
         public Player(String n, double m)
         {
             name = n;
             money = m;
             numItems = 0;
-            backpack = new Weapon[10];
+            backpack = new Backpack(30);
         }
 
         public void buy(Weapon w)
         {
             System.out.println(w.weaponName+" bought...");
-            backpack[numItems] = w;
+            backpack.insert(w);
             numItems++;
             System.out.println(numItems);
         }
@@ -44,18 +44,10 @@ package com.company;
         {
             System.out.println("\n");
             System.out.println(" Name:"+name+"\n Money:"+money);
-            printBackpack();
+            backpack.getPrintList();
         }
 
-        public void printBackpack()
-        {
-            System.out.println(" "+name+", you own "+numItems+" Weapons:");
-            for (int x = 0; x < numItems; x++)
-            {
-                System.out.println(" "+backpack[x].weaponName);
-            }
-            System.out.println();
-        }
+
     }
 
 
