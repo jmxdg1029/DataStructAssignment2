@@ -11,23 +11,25 @@ package com.company;
             name = n;
             money = m;
             numItems = 0;
-            backpack = new Backpack(30);
+            backpack = new Backpack();
         }
 
         public void buy(Weapon w)
         {
-            System.out.println(w.weaponName+" bought...");
+
             backpack.insert(w);
+            System.out.println(w.weaponName+" bought...");
             numItems++;
             System.out.println(numItems);
         }
-        public void withdraw(double amt)
+        public boolean withdraw(double amt)
         {
             money = money - amt;
             if (money<=0){
                 money = money + amt;
-                System.out.println("You do not have enough money");
+                return false;
             }
+            return true;
         }
 
         public boolean inventoryFull()
@@ -37,7 +39,7 @@ package com.company;
 
         public boolean noMoney()
         {
-            return (money <= 0) ;
+            return (money < 0) ;
         }
 
         public void printCharacter()

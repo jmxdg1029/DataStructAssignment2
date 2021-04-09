@@ -154,10 +154,12 @@ public class Main {
             ShopItem si = ht.get(choice);
             if (si != null)
             {
-                p.buy(si.item);
-                p.withdraw(si.item.cost);
-                p.noMoney();
-                si.numberInStock--;
+                if(p.withdraw(si.item.cost) != false) {
+                    p.buy(si.item);
+                    si.numberInStock--;
+                }else{
+                    System.out.println("Not enough Money");
+                }
             }
             else
             {
@@ -176,7 +178,7 @@ public class Main {
         System.out.println("Please enter Player name:");
         pname=sc.next();
         Player pl= new Player(pname,45);
-        ArrayManager ht= new ArrayManager(101);
+        ArrayManager ht= new ArrayManager(80);
         showMenu(ht,pl,sc);
     }
 }

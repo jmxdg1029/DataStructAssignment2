@@ -8,8 +8,10 @@ public class Backpack {
     double currWeight;
     double maxWeight;
 
-    public Backpack(int size){
-        maxItems = size;
+    public Backpack(){
+        maxItems = 30;
+        maxWeight = 90;
+        currWeight = 0;
         table = new LinkedList[maxItems];
     }
 
@@ -24,15 +26,24 @@ public class Backpack {
 
     public void insert(Weapon item)
     {
-        //if currBagWeight + item.weight > maxWeight
-        int pos = hashFunction(item);
-        if (table[pos] == null)
-            table[pos] = new LinkedList();
-        table[pos].addFront(item);
-        //currBackpack += item.weight
-        //currItem++
-        System.out.println(table[pos]);
-        numItems++;
+        if(currWeight + item.weight <= maxWeight ) {
+            if(numItems <= maxItems) {
+                int pos = hashFunction(item);
+                if (table[pos] == null)
+                    table[pos] = new LinkedList();
+                table[pos].addFront(item);
+                currWeight += item.weight;
+                System.out.println(table[pos]);
+                System.out.println(currWeight);
+                numItems++;
+            }
+            else{
+                System.out.println("The bag is full....");
+            }
+        }
+        else{
+            System.out.println("The bag too heavy....");
+        }
     }
 
 
