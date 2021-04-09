@@ -24,10 +24,13 @@ public class Backpack {
 
     public void insert(Weapon item)
     {
+        //if currBagWeight + item.weight > maxWeight
         int pos = hashFunction(item);
         if (table[pos] == null)
             table[pos] = new LinkedList();
         table[pos].addFront(item);
+        //currBackpack += item.weight
+        //currItem++
         System.out.println(table[pos]);
         numItems++;
     }
