@@ -152,9 +152,9 @@ public class Main {
         while (choice.compareTo("end") != 0 && !p.inventoryFull())
         {
             ShopItem si = ht.get(choice);
-            if (si != null)
+            if (si != null && si.numberInStock > 0)
             {
-                if(p.withdraw(si.item.cost) != false) {
+                if(p.withdraw(si.item.cost) != false ) {
                     p.buy(si.item);
                     si.numberInStock--;
                 }else{
