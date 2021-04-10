@@ -1,6 +1,9 @@
+//John Michael De Guzman 101248107
+//Gabriel Silva 101245036
+//Ruzzel Orejola 1013474777
+
 package com.company;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -105,12 +108,14 @@ public class Main {
         }
     }
 
+
     public static void showRemoveMenu(ArrayManager ht){
 
         System.out.println();
         System.out.println("***********DELETE A WEAPON*********");
         System.out.print("Please enter the Name of the Weapon ('end' to quit):");
     }
+
 
     public static void removeWeapon(ArrayManager ht, Scanner sc)
     {
@@ -144,28 +149,23 @@ public class Main {
         System.out.println("Please select a weapon to buy('end' to quit):");
     }
 
-    public static void showRoom(ArrayManager ht, Player p,Scanner sc)
-    {
+    public static void showRoom(ArrayManager ht, Player p,Scanner sc) {
         String choice;
-        showRoomMenu(ht,p);
-        choice=sc.next();
-        while (choice.compareTo("end") != 0 && !p.inventoryFull())
-        {
+        showRoomMenu(ht, p);
+        choice = sc.next();
+        while (choice.compareTo("end") != 0 && !p.inventoryFull()) {
             ShopItem si = ht.get(choice);
-            if (si != null && si.numberInStock > 0)
-            {
-                if(p.withdraw(si.item.cost) != false ) {
+            if (si != null && si.numberInStock > 0) {
+                if (p.withdraw(si.item.cost) != false) {
                     p.buy(si.item);
                     si.numberInStock--;
-                }else{
+                } else {
                     System.out.println("Not enough Money");
                 }
+            } else {
+                System.out.println(" ** " + choice + " not found!! **");
             }
-            else
-            {
-                System.out.println(" ** "+choice+" not found!! **" );
-            }
-            showRoomMenu(ht,p);
+            showRoomMenu(ht, p);
             choice = sc.next();
         }
         System.out.println("");

@@ -1,3 +1,6 @@
+//John Michael De Guzman 101248107
+//Gabriel Silva 101245036
+//Ruzzel Orejola 1013474777
 package com.company;
 
 class Weapon

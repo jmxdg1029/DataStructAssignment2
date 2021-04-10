@@ -1,3 +1,6 @@
+//John Michael De Guzman 101248107
+//Gabriel Silva 101245036
+//Ruzzel Orejola 1013474777
 package com.company;
 
 public class Backpack {
@@ -33,8 +36,6 @@ public class Backpack {
                     table[pos] = new LinkedList();
                 table[pos].addFront(item);
                 currWeight += item.weight;
-                System.out.println(table[pos]);
-                System.out.println(currWeight);
                 numItems++;
             }
             else{
